@@ -10,6 +10,8 @@ router.post('/', flightsCtrl.create)
 /* GET users listing. */
 router.delete("/:id", flightsCtrl.delete)
 
+router.get('/:id', flightsCtrl.show)
+
 export {
   router
 }

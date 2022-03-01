@@ -34,9 +34,19 @@ function deleteFlight(req, res) {
   })
 }
 
+function show(req, res) {
+  Flight.findById(req.params.id, function (err, movie) {
+    res.render('flights/show', {
+      title: 'Flight Detail',
+      flight,
+    })
+  })
+}
+
 export {
   newFlight as new,
   create,
   index,
   deleteFlight as delete,
+  show,
 }
