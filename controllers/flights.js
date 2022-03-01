@@ -7,16 +7,36 @@ function newFlight(req, res) {
 }
 
 function create(req, res) {
+  console.log(req.body)
+  if (req.body.departs === '') delete req.body.departs
   const flight = new Flight(req.body)
+  console.log(req.body)
   flight.save(function(err) {
     if (err) return res.redirect('/flights/new')
-    res.redirect('/flights/new')
+    res.redirect('/flights')
   })
 }
 
+function index(req, res) {
+  Flight.find({}, function (error, flights) {
+    console.log(error)
+    res.render("flights/index", {
+      error, 
+      flights,
+      title: 'All Flights',
+    })
+  })
+}
 
+function deleteFlight(req, res) {
+  Flight.findByIdAndDelete(req.params.id, function(err, flight) {
+    res.redirect('/flights')
+  })
+}
 
 export {
   newFlight as new,
-  create
+  create,
+  index,
+  deleteFlight as delete,
 }
