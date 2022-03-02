@@ -3,7 +3,9 @@ import res from 'express/lib/response.js'
 import { Flight } from '../models/flights.js'
 
 function newFlight(req, res) {
-  res.render('flights/new')
+  res.render('flights/new', {
+    title: "Add Flight",
+  })
 }
 
 function create(req, res) {
@@ -35,8 +37,8 @@ function deleteFlight(req, res) {
 }
 
 function show(req, res) {
-  Flight.findById(req.params.id, function (err, movie) {
-    res.render('flights/show', {
+  Flight.findById(req.params.id, function (err, flight) {
+    res.render('flights/shows', {
       title: 'Flight Detail',
       flight,
     })
