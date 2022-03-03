@@ -9,10 +9,8 @@ function newFlight(req, res) {
 }
 
 function create(req, res) {
-  console.log(req.body)
   if (req.body.departs === '') delete req.body.departs
   const flight = new Flight(req.body)
-  console.log(req.body)
   flight.save(function(err) {
     if (err) return res.redirect('/flights/new')
     res.redirect('/flights')
@@ -45,10 +43,23 @@ function show(req, res) {
   })
 }
 
+function createTicket(req, res) {
+  const ticket = req.body
+  const id = req.params.id
+  Flight.findById(id, function(err, flight) {
+  flight.tickets.push(ticket)
+  flight.save(function(err) {
+    if (err) return res.redirect(`/flights/${id}`)
+    res.redirect(`/flights/${id}`)
+  })
+  })
+}
+
 export {
   newFlight as new,
   create,
   index,
   deleteFlight as delete,
   show,
+  createTicket as ticket,
 }

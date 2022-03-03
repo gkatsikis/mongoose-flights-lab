@@ -10,7 +10,7 @@ router.get('/:id', flightsCtrl.show)
 
 router.post('/', flightsCtrl.create)
 /* GET users listing. */
-
+router.post('/:id', flightsCtrl.ticket)
 
 router.delete("/:id", flightsCtrl.delete)
 
