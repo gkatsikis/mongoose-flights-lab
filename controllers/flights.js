@@ -1,6 +1,7 @@
 
 import res from 'express/lib/response.js'
 import { Flight } from '../models/flights.js'
+import { Meal } from '../models/meal.js'
 
 function newFlight(req, res) {
   res.render('flights/new', {
@@ -42,6 +43,22 @@ function show(req, res) {
     })
   })
 }
+
+// function show(req, res) {
+//   Flight.findById(req.params.id)
+//   .populate('meals')
+//   .exec(function (err, flight) {
+//     Meal.find({_id: {$nin: flight.meals}}, function (err, meal) {
+//       console.log("flight ", flight)
+//       console.log("meal: ", meal)
+//       res.render("flight/show", {
+//         flight: flight,
+//         title: "Flight Detail",
+//         meal,
+//       })
+//     })
+//   })
+// }
 
 function createTicket(req, res) {
   const ticket = req.body
