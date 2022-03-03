@@ -12,6 +12,8 @@ router.post('/', flightsCtrl.create)
 /* GET users listing. */
 router.post('/:id', flightsCtrl.ticket)
 
+router.post("/:id/meals", flightsCtrl.addToMeals)
+
 router.delete("/:id", flightsCtrl.delete)
 
 

@@ -7,10 +7,6 @@ const ticketSchema = new Schema({
   price: {type: Number, min: 0},
 })
 
-const mealSchema = new Schema({
-  name: String,
-})
-
 const flightSchema = new Schema({
   airline: {type: String, enum: ["American", "Southwest", "United", "Virgin Galactic"]},
   airport: {type: String, enum: ["AUS", "DFW", "DEN", "LAX", "SAN"]},
